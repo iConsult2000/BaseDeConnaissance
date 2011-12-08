@@ -1,0 +1,13 @@
+#Begin
+<jsp:useBean id="my3G_model1" class="com.insia.org.servlets.MyBeans" scope="session">
+
+<%-- this body is executed only if the bean is created --%>
+#......
+
+<%-- intialize bean properties --%>
+<jsp:setProperty name="my3G_model1" property="prix" value="15" />
+<jsp:setProperty name="my3G_model1" property="item" value="3G_model1" />
+<jsp:setProperty name="my3G_model1" property="description"	value="Cle internet 3G" />
+
+#End
+</jsp:useBean>

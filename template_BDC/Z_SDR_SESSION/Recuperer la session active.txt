@@ -1,0 +1,8 @@
+Dans la JSP
+<%if (session.getAttribute("login") != null) { %>
+
+#.................
+<%} else {%>
+#.................
+
+<%} %>
