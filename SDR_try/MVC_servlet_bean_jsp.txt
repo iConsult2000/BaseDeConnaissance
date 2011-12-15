@@ -1,8 +1,7 @@
 This is how to write an MVC application
 Shared bean within a session
 
-//Get a bean property
-<jsp:getProperty property="attr1" name="sessionBean"/></h2>
+
 
 I) Create a package
 	com.queeme.servlets
@@ -39,6 +38,9 @@ III) Create Servlet in doGet()
 IV) Place your JSP in /WEB-INF,
 		//Declare the bean to use
 		<jsp:useBean id="sessionBean" type="com.queeme.servlets.BakedBean" scope="session"/>
+		
+		//Get a bean property
+		<jsp:getProperty property="attr1" name="sessionBean"/></h2>
 
 V) In Web.xml
 	<servlet>
