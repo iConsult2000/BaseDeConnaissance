@@ -1,0 +1,60 @@
+This is how to write an MVC application
+Shared bean within a session
+
+//Get a bean property
+<jsp:getProperty property="attr1" name="sessionBean"/></h2>
+
+I) Create a package
+	com.queeme.servlets
+	
+II) Create a Class.java for instance
+	BakedBean.java
+		public class BakedBean {
+		
+			private String attr1;
+			private String attr2;
+			
+			public BakedBean() {}
+			}
+
+III) Create Servlet in doGet()
+		
+		HttpSession session = request.getSession();
+	
+		// Try MVC Code
+		BakedBean id001 = new BakedBean();
+	
+		// initialize id001
+		id001.setAttr1("High quality");
+		id001.setAttr2("Consult it");
+	
+		// session sharing
+		session.setAttribute("sessionBean", id001);
+	
+		// Use dispatcher
+	
+		request.getRequestDispatcher("/WEB-INF/Session-Req.jsp").forward(
+				request, response);
+
+IV) Place your JSP in /WEB-INF,
+		//Declare the bean to use
+		<jsp:useBean id="sessionBean" type="com.queeme.servlets.BakedBean" scope="session"/>
+
+V) In Web.xml
+	<servlet>
+		<servlet-name>BakedServlet</servlet-name>
+		<servlet-class>com.queeme.servlets.BakedServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BakedServlet</servlet-name>
+		<url-pattern>/bake</url-pattern>
+	</servlet-mapping>
+
+VI) Publish on server tomcat
+
+VII) Access your MVC by 
+	refer to your web.xml url-patter 
+	http://myproject/bake
+	
+Enjoy :-)) 
+
