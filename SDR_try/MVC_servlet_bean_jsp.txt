@@ -54,6 +54,7 @@ V) In Web.xml
 
 VI) Publish on server tomcat
 
+
 VII) Access your MVC by 
 	refer to your web.xml url-patter 
 	http://myproject/bake
