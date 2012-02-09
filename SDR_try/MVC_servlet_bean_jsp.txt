@@ -37,7 +37,7 @@ III) Create Servlet in doGet()
 
 IV) Place your JSP in /WEB-INF,
 		//Declare the bean to use
-		<jsp:useBean id="sessionBean" type="com.queeme.servlets.BakedBean" scope="session"/>
+		<jsp:useBean id="sessionBean" class="com.queeme.servlets.BakedBean" scope="session"/>
 		
 		//Get a bean property
 		<jsp:getProperty property="attr1" name="sessionBean"/></h2>
