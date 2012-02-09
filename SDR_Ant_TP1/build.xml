@@ -1,0 +1,74 @@
+<project name="HelloWorld" basedir="." default="main">
+
+	<!-- Setting up properties -->
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+    <property name="classes.dir" location="build/classes"/>
+    <property name="jar.dir" location="build/jar"/>
+    <property name="lib.dir" location="lib" />
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="main-class" value="com.queemy.HelloWorld"/>
+
+
+    <!-- Definition de l'ensemble des fichiers Jar à utiliser -->
+    <fileset id="fileset.jar.lib" dir="${lib.dir}">
+        <include name="**/log4j-1.2.16.jar"/>
+    </fileset>
+
+    <!-- Update the classpath 
+         Ajouter les librairies .jar et le repertoire des classes -->
+
+	<path id="project.classpath">
+        <fileset refid="fileset.jar.lib"/>
+        <pathelement location="${lib.dir}/log4j-1.2.16.jar" />
+        <pathelement location="${classes.dir}"/>
+	</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${jar.dir}" />
+	</target>
+
+	<target name="compile" depends="init">
+        <javac debug="true" debuglevel="${debuglevel}" srcdir="${src.dir}" destdir="${classes.dir}" >
+            <include name="**/*.java"/>
+            <classpath refid="project.classpath" />
+        </javac>
+	</target>
+
+
+	<target name="jar" depends="compile">
+
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest >
+				<attribute name="Main-Class" value="HelloWorld" />
+                <attribute name="Class-Path" value="log4j-1.2.16.jar"/>
+            </manifest>
+            <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+        <java fork="true" classname="${main-class}" >
+			<classpath>
+				<path refid="project.classpath" />
+			</classpath>
+        </java>
+	</target>
+
+
+	<target name="clean" description="clean up">
+		<delete dir="build/classes">
+		</delete>
+		<delete dir="build/jar">
+		</delete>
+	</target>
+
+	<target name="clean-build" depends="clean,jar" />
+	<target name="main" depends="clean,run" />
+
+</project>
