@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ARTICLES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="biblio.xsd">
+  <ARTICLE>
+    <TITRE>TITRE</TITRE>
+    <TEXTE>
+    JE SUIS SUPERBE
+      <PARAGRAPHE>PARAGRAPHE</PARAGRAPHE>
+    </TEXTE>
+    <DATE>2001</DATE>
+    <BIBLIOGRAPHIE>
+      <!--<SITE>
+        <NOM>NOM</NOM>
+        <URL>URL</URL>
+      </SITE>-->
+      <OUVRAGE>
+        <TITRE>NOM</TITRE>
+        <AUTEUR>URL</AUTEUR>
+        <DATE>2012-03-02</DATE>
+        <EDITEUR></EDITEUR>
+      </OUVRAGE>
+    </BIBLIOGRAPHIE>
+  </ARTICLE>
+</ARTICLES>

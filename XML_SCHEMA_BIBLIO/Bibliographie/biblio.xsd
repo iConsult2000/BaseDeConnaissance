@@ -1,0 +1,49 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<xsd:element name="ARTICLES" type="_ARTICLES"/>
+	
+	<xsd:complexType name="_ARTICLES">
+		<xsd:sequence>
+			<xsd:element name="ARTICLE" type="_ARTICLE" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="_ARTICLE">
+		<xsd:sequence>
+			<xsd:element name="TITRE" type="xsd:string"/>
+			<xsd:element name="TEXTE" type="_TEXTE"/>
+			<xsd:element name="DATE" type="xsd:gYear"/>
+			<xsd:element name="BIBLIOGRAPHIE" type="_BIBLIO"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="_TEXTE" mixed="true">
+		<xsd:sequence>
+			<xsd:element name="PARAGRAPHE" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="_BIBLIO">
+		<xsd:choice>
+			<xsd:element name="SITE" type="_SITE"/>
+			<xsd:element name="OUVRAGE" type="_OUVRAGE"/>
+		</xsd:choice>
+	</xsd:complexType>
+	
+	<xsd:complexType name="_SITE">
+		<xsd:sequence>
+			<xsd:element name="NOM" type="xsd:string"/>
+			<xsd:element name="URL" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="_OUVRAGE">
+		<xsd:sequence>
+			<xsd:element name="TITRE" type="xsd:string"/>
+			<xsd:element name="AUTEUR" type="xsd:string"/>
+			<xsd:element name="DATE" type="xsd:date"/>
+			<xsd:element name="EDITEUR" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
